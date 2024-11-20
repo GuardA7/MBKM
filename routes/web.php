@@ -58,6 +58,10 @@ Route::get('/user/pelatihan', [PelatihanController::class, 'index_user'])->name(
 Route::get('/user/pelatihan/deskripsi/{id}', [PelatihanController::class, 'deskripsi'])->name('user.pelatihan.deskripsi');
 Route::get('/pelatihan/{id}/daftar', [PelatihanController::class, 'showDaftarForm'])->name('user.pelatihan.daftar');
 Route::post('/pelatihan/{id}/daftar', [PelatihanController::class, 'submitDaftar'])->name('user.pelatihan.daftar.submit');
+Route::get('/user/pelatihan/{id}/detail', [PelatihanController::class, 'detail_pelatihan'])->name('user.pelatihan.detail');
+
+
+
 //Testing
 // User routes
 Route::middleware(['auth'])->group(function () {

@@ -42,11 +42,17 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100 shadow-sm">
                     <img src="{{ asset('img/pelatihan/' . ($pelatihan->gambar ?? 'default.jpg')) }}" class="card-img-top" alt="{{ $pelatihan->nama }}">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">{{ $pelatihan->nama }}</h5>
-                        <p class="card-text">{{ Str::limit($pelatihan->deskripsi, 100) }}</p>
-                        <p class="card-text"><strong>Harga:</strong> Rp. {{ number_format($pelatihan->harga, 0, ',', '.') }}</p>
-                        <a href="{{ route('user.pelatihan.deskripsi', $pelatihan->id) }}" class="btn btn-primary">Lihat Detail</a>
+                        <p class="card-text text-danger fw-bold fs-5 mb-2"><strong>Harga:</strong> Rp.
+                            {{ number_format($pelatihan->harga, 0, ',', '.') }}</p>
+                        <p class="card-text description">{{ Str::limit($pelatihan->deskripsi, 100) }}</p>
+                        <div class="card-footer fixed-footer bg-white">
+                            <a href="{{ route('user.pelatihan.deskripsi', $pelatihan->id) }}"
+                                class="btn btn-primary btn-sm px-4 rounded-pill w-100">
+                                Lihat Detail
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

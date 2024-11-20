@@ -3,21 +3,41 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+use App\Models\Jurusan;
+use App\Models\Prodi;
+use App\Models\Kelas;
 
 class JurusanSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        DB::table('jurusans')->insert([
-            ['nama_jurusan' => 'Teknik Informatika'],
-            ['nama_jurusan' => 'Sistem Informasi'],
-            ['nama_jurusan' => 'Teknik Elektro'],
-            ['nama_jurusan' => 'Manajemen Informatika'],
-            ['nama_jurusan' => 'Teknik Mesin'],
-        ]);
+        $jurusans = [
+            'Teknik Informatika',
+            'Teknik Mesin',
+            'Teknik Pendingin'
+        ];
+
+        foreach ($jurusans as $jurusanName) {
+            // Create Jurusan
+            $jurusan = Jurusan::create([
+                'nama_jurusan' => $jurusanName
+            ]);
+
+            for ($i = 1; $i <= 6; $i++) {
+                // Create Prodi
+                $prodi = Prodi::create([
+                    'nama_prodi' => "$jurusanName Prodi $i",
+                    'jurusan_id' => $jurusan->id
+                ]);
+
+                for ($j = 1; $j <= 3; $j++) {
+                    // Create Kelas
+                    Kelas::create([
+                        'nama_kelas' => "Kelas $j $prodi->nama_prodi",
+                        'prodi_id' => $prodi->id
+                    ]);
+                }
+            }
+        }
     }
 }

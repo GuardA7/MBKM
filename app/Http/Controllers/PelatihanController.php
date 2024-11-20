@@ -146,6 +146,8 @@ class PelatihanController extends Controller
         }
     }
 
+// User
+
     public function index_user(Request $request)
     {
         // Get search and category filters from the request
@@ -276,5 +278,22 @@ public function pelatihanSaya(Request $request)
         return view('user.content.pelatihan.pelatihan_saya', compact('pelatihans'));
     }
 
+    public function detail_pelatihan($id)
+    {
+        $user = Auth::user();
+
+        // Cari pelatihan berdasarkan ID dan relasi dengan pivot
+        $pelatihan = $user->pelatihan()
+            ->with(['kategori', 'lsp'])
+            ->where('pelatihan_id', $id) // Pastikan id pelatihan cocok
+            ->firstOrFail();
+
+        // Return view dengan data pelatihan
+        return view('user.content.pelatihan.detailPendaftaran', compact('pelatihan'));
+    }
+
+
 }
+
+
 

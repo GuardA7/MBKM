@@ -18,12 +18,6 @@
                 </svg>
             </div>
         </div>
-
-        <div class="container-fluid px-4 content-container bg-light py-5">
-            <h2 class="category-title text-center mb-5">Search Pelatihan</h2>
-            <form class="d-flex justify-content-center mb-4">
-                <input type="text" class="form-control me-2 shadow-sm" placeholder="Cari Kategori..." aria-label="Search">
-                <button class="btn btn-primary px-4 shadow-sm" type="submit">Cari</button>
             </form>
             @include('user.content.pelatihan.list_pelatian')
 
